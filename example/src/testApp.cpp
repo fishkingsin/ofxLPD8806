@@ -31,21 +31,22 @@ void testApp::setup(){
 		float y = 100+20+(i/col)*ptSize;
 		led->addLED(i,ofVec2f(x,y));
 	}
-	#ifdef OF_TARGET_LINUXARMV6L
+#ifdef OF_TARGET_LINUXARMV6L
 	spi.connect();
+	ofLogNotice()<<"connected to SPI";
 #endif
-//	gamma = new unsigned char[256];
-//	for (i = 0 ; i < 256;i++)
-//	{
-//		int shift = powf((i*1.0f) / 255.0, 2.5) * 127.0 + 0.5;
-//		gamma[i] = (0x80 | shift)-127;
-//	}
+	//	gamma = new unsigned char[256];
+	//	for (i = 0 ; i < 256;i++)
+	//	{
+	//		int shift = powf((i*1.0f) / 255.0, 2.5) * 127.0 + 0.5;
+	//		gamma[i] = (0x80 | shift)-127;
+	//	}
 }
 void testApp::exit()
 {
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
-	#ifdef OF_TARGET_LINUXARMV6L
+#ifdef OF_TARGET_LINUXARMV6L
 	spi.send(led->txBuffer);
 #endif
 }
@@ -62,9 +63,9 @@ void testApp::update(){
 	led->renderBuffer.end();
 	
 	//	led->encode();
-//	color = ofColor::fromHsb(counter,125,255);
-//	led->clear(color);
-
+	//	color = ofColor::fromHsb(counter,125,255);
+	//	led->clear(color);
+	
 #ifdef OF_TARGET_LINUXARMV6L
 	spi.send(led->txBuffer);
 #endif
@@ -76,7 +77,7 @@ void testApp::update(){
 void testApp::draw(){
 	ofBackground(ofColor::gray);
 	
-
+	
 	
 	ofPushMatrix();
 	ofScale(10, 10);
@@ -92,50 +93,50 @@ void testApp::draw(){
 	ofPopStyle();
 	
 	led->draw(ptSize);
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::windowResized(int w, int h){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::gotMessage(ofMessage msg){
-
+	
 }
 
 //--------------------------------------------------------------
-void testApp::dragEvent(ofDragInfo dragInfo){ 
-
+void testApp::dragEvent(ofDragInfo dragInfo){
+	
 }
