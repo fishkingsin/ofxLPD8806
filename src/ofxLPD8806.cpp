@@ -7,6 +7,7 @@
 //
 
 #include "ofxLPD8806.h"
+#ifdef OF_TARGET_LINUXARMV6L
 ofxLPD8806::ofxLPD8806()
 {
 	device = "/dev/spidev0.0";
@@ -62,3 +63,4 @@ int ofxLPD8806::spi_init(int filedes) {
 	
 	return 0;
 }
+#endif

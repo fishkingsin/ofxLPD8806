@@ -7,6 +7,20 @@ float ptSize = 5;
 int counter = 0;
 //unsigned char *gamma;
 ofColor color;
+void drawGraphic(int mode)
+{
+	ofPushStyle();
+	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+	
+	for(int i = 0 ; i < 1; i++)
+	{
+		ofSetColor(ofColor::fromHsb(i%360, 255, 255),200);
+		ofCircle(int(ofGetFrameNum()+i*(SQAURE_ROOT)-16)%numLED, 0, SQAURE_ROOT*0.5);
+	}
+	ofDisableBlendMode();
+	ofPopStyle();
+	
+}
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofSetLogLevel(OF_LOG_VERBOSE);
@@ -17,7 +31,9 @@ void testApp::setup(){
 		float y = 100+20+(i/col)*ptSize;
 		led->addLED(i,ofVec2f(x,y));
 	}
+	#ifdef OF_TARGET_LINUXARMV6L
 	spi.connect();
+#endif
 //	gamma = new unsigned char[256];
 //	for (i = 0 ; i < 256;i++)
 //	{
@@ -29,53 +45,53 @@ void testApp::exit()
 {
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
+	#ifdef OF_TARGET_LINUXARMV6L
 	spi.send(led->txBuffer);
+#endif
 }
 //--------------------------------------------------------------
 void testApp::update(){
-//	led->clear(0);
-//	led->clear(ofColor::black);
-//	led->renderBuffer.begin();
-//	
-//	//draw video as 8px width,height
-//	//draw line by line horizontally
-//	//[8 px first row ][8 px second row ]
-//	ofPushStyle();
-//	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-//	
-//	for(int i = 0 ; i < 1; i++)
-//	{
-//		ofSetColor(ofColor::fromHsb(i%360, 255, 255),200);
-//		ofCircle(int(ofGetFrameNum()+i*(SQAURE_ROOT)-16)%numLED, 0, SQAURE_ROOT*0.5);
-//	}
-//	ofDisableBlendMode();
-//	ofPopStyle();
-//	led->renderBuffer.end();
-//
-//	led->encode();
-	color.r = counter;
-	color.g = counter;
-	color.b = counter;
-	led->clear(color);
+	led->clear(0);
+	led->clear(ofColor::black);
+	led->renderBuffer.begin();
+	
+	//draw video as 8px width,height
+	//draw line by line horizontally
+	//[8 px first row ][8 px second row ]
+	drawGraphic(0);
+	led->renderBuffer.end();
+	
+	//	led->encode();
+//	color = ofColor::fromHsb(counter,125,255);
+//	led->clear(color);
 
+#ifdef OF_TARGET_LINUXARMV6L
 	spi.send(led->txBuffer);
+#endif
 	counter++;
 	counter%=255;
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofBackground(color);
-//	ofPushStyle();
-//	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-//	
-//	for(int i = 0 ; i < 1; i++)
-//	{
-//		ofSetColor(ofColor::fromHsb(i%360, 255, 255),200);
-//		ofCircle(int(ofGetFrameNum()+i*(SQAURE_ROOT)-16)%numLED, 0, SQAURE_ROOT*0.5);
-//	}
-//	ofDisableBlendMode();
-//	ofPopStyle();
+	ofBackground(ofColor::gray);
+	
+
+	
+	ofPushMatrix();
+	ofScale(10, 10);
+	//draw again to preview
+	drawGraphic(0);
+	//	led->encodedBuffer.draw(0,0);
+	ofPopMatrix();
+	
+	ofPushStyle();
+	ofNoFill();
+	ofSetColor(0, 255, 0);
+	ofRect(0,0,numLED*10,10);
+	ofPopStyle();
+	
+	led->draw(ptSize);
 
 }
 

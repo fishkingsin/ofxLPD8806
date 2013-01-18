@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
-
+#ifdef OF_TARGET_LINUXARMV6L 
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
@@ -29,3 +29,4 @@ private:
 	int spi_device;
 	bool connected;
 };
+#endif
