@@ -19,7 +19,7 @@ class testApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 	ofxLEDsLPD8806 *led;
-#ifdef OF_TARGET_LINUXARMV6L
+#ifdef TARGET_LINUX_ARM
 	ofxLPD8806 spi;
 #endif
 };

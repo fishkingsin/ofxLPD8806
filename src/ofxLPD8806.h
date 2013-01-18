@@ -9,7 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
-#ifdef OF_TARGET_LINUXARMV6L 
+#ifdef TARGET_LINUX_ARM 
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>

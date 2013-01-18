@@ -7,7 +7,7 @@
 //
 
 #include "ofxLPD8806.h"
-#ifdef OF_TARGET_LINUXARMV6L
+#ifdef TARGET_LINUX_ARM
 ofxLPD8806::ofxLPD8806()
 {
 	device = "/dev/spidev0.0";

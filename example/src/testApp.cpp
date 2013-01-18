@@ -31,7 +31,7 @@ void testApp::setup(){
 		float y = 100+20+(i/col)*ptSize;
 		led->addLED(i,ofVec2f(x,y));
 	}
-#ifdef OF_TARGET_LINUXARMV6L
+#ifdef TARGET_LINUX_ARM
 	spi.connect();
 	ofLogNotice()<<"connected to SPI";
 #endif
@@ -46,7 +46,7 @@ void testApp::exit()
 {
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
-#ifdef OF_TARGET_LINUXARMV6L
+#ifdef TARGET_LINUX_ARM
 	spi.send(led->txBuffer);
 #endif
 }
@@ -66,7 +66,7 @@ void testApp::update(){
 	//	color = ofColor::fromHsb(counter,125,255);
 	//	led->clear(color);
 	
-#ifdef OF_TARGET_LINUXARMV6L
+#ifdef TARGET_LINUX_ARM
 	spi.send(led->txBuffer);
 #endif
 	counter++;
