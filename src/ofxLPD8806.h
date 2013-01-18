@@ -9,6 +9,11 @@
 #pragma once
 
 #include "ofMain.h"
+
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <linux/types.h>
 #include <linux/spi/spidev.h>
 
 class ofxLPD8806
@@ -16,8 +21,8 @@ class ofxLPD8806
 public:
 	ofxLPD8806();
 	~ofxLPD8806();
-	void connect();
-	void send();
+	bool connect();
+	void send(const std::vector<uint8_t>& data);
 private:
 	int spi_init(int filedes);
 	string device;

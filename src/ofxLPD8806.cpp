@@ -19,17 +19,17 @@ ofxLPD8806::~ofxLPD8806()
 }
 bool ofxLPD8806::connect()
 {
-	spi_device = open(device,O_WRONLY);
+	spi_device = open(device.c_str(),O_WRONLY);
 	if(spi_device<0) {
 		fprintf(stderr, "Can't open device.\n");
 		connected = false;
 	}else connected = true;
-	ret=spi_init(spi_device);
+	int ret=spi_init(spi_device);
 	if(ret==-1) {
 		fprintf(stderr,"error=%d, %s\n", errno, strerror(errno));
 		connected = false;
 	}else connected = true;
-	
+	return connected;
 }
 
 //--------------------------------------------------------------
