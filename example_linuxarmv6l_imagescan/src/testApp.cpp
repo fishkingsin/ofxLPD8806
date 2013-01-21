@@ -6,16 +6,22 @@ int SQAURE_ROOT =int(sqrt((float)col));
 float ptSize = 5;
 int counter = 0;
 ofColor color;
-unsigned char *colors;
+vector<uint8_t> *colors;
 
-
+u_int8_t GAMMA[256];
 //--------------------------------------------------------------
 void testApp::setup(){
+	
+	for (int i = 0 ; i < 256; i++)
+	{
+//		int shift = powf((i*1.0f) / 255.0, 2.5) * 127.0 ;
+		GAMMA[i] = (i >> 1)+1;
+	}
 	image.loadImage("image.png");
 	
 	row = image.getHeight();
 	col = image.getWidth();
-	numLED = col;
+	numLED = row;
 
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
@@ -37,16 +43,21 @@ void testApp::setup(){
 	}
 #endif
 
-	colors = new unsigned char[row*col*3];
+	colors = new vector<uint8_t>[col];
+	
 	unsigned char *pixels = image.getPixels();
-	memcpy(colors,pixels,row*col*3);
-//		for(int i = 0 ; i < row*col ; i++)
-//		{
-//			
-//			colors[i] = pixels[i];
-//			colors[i*3+1] = pixels[i*3+1];
-//			colors[i*3+1] = pixels[i*3+1];
-//		}
+
+
+	for(int x = 0 ; x < col ; x++)
+	{
+		for(int y = 0 ; y < row ; y++)
+		{
+			int i = (x+(y*col))*3;
+			colors[x].push_back(GAMMA[(int)pixels[i]]);
+			colors[x].push_back(GAMMA[(int)pixels[i+1]]);
+			colors[x].push_back(GAMMA[(int)pixels[i+2]]);
+		}
+	}
 	
 	startThread();
 }
@@ -66,18 +77,18 @@ void testApp::threadedFunction()
 	while( isThreadRunning() != 0 ){
 		if( lock() ){
 			
-			led->setPixels(&colors[counter],col);
+//			led->setPixels(&colors[(counter*row)*3],row);
 //			for(int i=0 ; i < led->txBuffer.size() ; i++)
 //			{
 //				cout << int(led->txBuffer[i]) << "\t";
 //			}
 #ifdef TARGET_LINUX_ARM
-			spi.send(led->txBuffer);
+			spi.send(colors[counter]);
 #endif
 			counter++;
 			counter%=col;
 			unlock();
-			usleep(1000000);
+			usleep(100000);
 		}
 	}
 }
@@ -89,6 +100,17 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	image.draw(0,0);
+	
+	for(int x = 0 ; x < col ; x++)
+	{
+		for(int y = 0 ; y < row ; y++)
+		{
+		ofPushStyle();
+		ofSetColor((int)colors[x][y*3], (int)colors[x][y*3+1], (int)colors[x][y*3+2]);
+		ofRect((x)*10,200+(y)*10,10,10);
+		ofPopStyle();
+		}
+	}
 }
 
 //--------------------------------------------------------------
