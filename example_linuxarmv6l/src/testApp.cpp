@@ -74,23 +74,23 @@ void testApp::threadedFunction()
 			counter++;
 			counter%=colors.size();
 			unlock();
-			usleep(1000);
+			usleep(10000);
 		}
 	}
 }
 //--------------------------------------------------------------
 void testApp::update(){
-//	led->clear(0);
-//	led->clear(ofColor::black);
-//	led->renderBuffer.begin();
+	led->clear(0);
+
+	led->renderBuffer.begin();
 	
 	//draw video as 8px width,height
 	//draw line by line horizontally
 	//[8 px first row ][8 px second row ]
-//	drawGraphic(0);
-//	led->renderBuffer.end();
+	drawGraphic(0);
+	led->renderBuffer.end();
 	
-//	led->encode();
+	led->encode();
 //	color = ofColor::fromHsb(counter,125,255);
 //	led->clear(color);
 	
@@ -98,7 +98,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofBackground(ofColor::fromHsb(counter,125,255));
+	ofBackground(125);
 	
 	
 	
@@ -116,7 +116,7 @@ void testApp::draw(){
 //	ofPopStyle();
 	
 //	led->draw(ptSize);
-	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,ofGetHeight()-100);
+//	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,ofGetHeight()-100);
 }
 
 //--------------------------------------------------------------
