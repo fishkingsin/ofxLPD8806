@@ -57,6 +57,7 @@ void testApp::setup(){
 			colors[x].push_back(GAMMA[(int)pixels[i+1]]);
 			colors[x].push_back(GAMMA[(int)pixels[i+2]]);
 		}
+		colors[x].push_back(0);
 	}
 	
 	startThread();
