@@ -33,7 +33,7 @@ void testApp::setup(){
 #endif
 
 	colors = new unsigned char[row*col*3];
-	unsigned char pixels = image.getPixels();
+	unsigned char *pixels = image.getPixels();
 	for(int x = 0 ; x < col ; x++)
 	{
 
@@ -62,6 +62,10 @@ void testApp::threadedFunction()
 		if( lock() ){
 			
 			led->setPixels(&colors[counter],row);
+			for(int i=0 ; i < led->txBuffer.size() ; i++)
+			{
+				cout << int(led->txBuffer[i]) << "\t";
+			}
 #ifdef TARGET_LINUX_ARM
 			spi.send(led->txBuffer);
 #endif
