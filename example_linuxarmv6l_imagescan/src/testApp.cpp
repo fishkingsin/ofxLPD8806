@@ -39,15 +39,15 @@ void testApp::setup(){
 
 	colors = new unsigned char[row*col*3];
 	unsigned char *pixels = image.getPixels();
-	for(int x = 0 ; x < col ; x++)
-	{
-
-		for(int y = 0 ; y < row ; y++)
-		{
-			int i = y+x*row;
-			colors[i] = pixels[i];
-		}
-	}
+	memcpy(colors,pixels,row*col*3);
+//		for(int i = 0 ; i < row*col ; i++)
+//		{
+//			
+//			colors[i] = pixels[i];
+//			colors[i*3+1] = pixels[i*3+1];
+//			colors[i*3+1] = pixels[i*3+1];
+//		}
+	
 	startThread();
 }
 void testApp::exit()
@@ -66,7 +66,7 @@ void testApp::threadedFunction()
 	while( isThreadRunning() != 0 ){
 		if( lock() ){
 			
-			led->setPixels(&colors[counter],row);
+			led->setPixels(&colors[counter],col);
 //			for(int i=0 ; i < led->txBuffer.size() ; i++)
 //			{
 //				cout << int(led->txBuffer[i]) << "\t";
@@ -88,7 +88,7 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	
+	image.draw(0,0);
 }
 
 //--------------------------------------------------------------
