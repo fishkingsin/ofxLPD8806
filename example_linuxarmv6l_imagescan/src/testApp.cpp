@@ -8,15 +8,15 @@ int counter = 0;
 ofColor color;
 vector<uint8_t> *colors;
 
-u_int8_t GAMMA[256];
+//u_int8_t GAMMA[256];
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	for (int i = 0 ; i < 256; i++)
-	{
-//		int shift = powf((i*1.0f) / 255.0, 2.5) * 127.0 ;
-		GAMMA[i] = (i >> 1)+1;
-	}
+//	for (int i = 0 ; i < 256; i++)
+//	{
+////		int shift = powf((i*1.0f) / 255.0, 2.5) * 127.0 ;
+//		GAMMA[i] = (i >> 1)+1;
+//	}
 	image.loadImage("image.png");
 	
 	row = image.getHeight();
@@ -53,9 +53,9 @@ void testApp::setup(){
 		for(int y = 0 ; y < row ; y++)
 		{
 			int i = (x+(y*col))*3;
-			colors[x].push_back(GAMMA[(int)pixels[i]]);
-			colors[x].push_back(GAMMA[(int)pixels[i+1]]);
-			colors[x].push_back(GAMMA[(int)pixels[i+2]]);
+			colors[x].push_back(pixels[i]);
+			colors[x].push_back(pixels[i+1]);
+			colors[x].push_back(pixels[i+2]);
 		}
 		colors[x].push_back(0);
 	}
@@ -78,13 +78,13 @@ void testApp::threadedFunction()
 	while( isThreadRunning() != 0 ){
 		if( lock() ){
 			
-//			led->setPixels(&colors[(counter*row)*3],row);
+			led->setPixels(colors[counter].data(),row);
 //			for(int i=0 ; i < led->txBuffer.size() ; i++)
 //			{
 //				cout << int(led->txBuffer[i]) << "\t";
 //			}
 #ifdef TARGET_LINUX_ARM
-			spi.send(colors[counter]);
+			spi.send(led->txBuffer);
 #endif
 			counter++;
 			counter%=col;
@@ -108,9 +108,17 @@ void testApp::draw(){
 		{
 		ofPushStyle();
 		ofSetColor((int)colors[x][y*3], (int)colors[x][y*3+1], (int)colors[x][y*3+2]);
-		ofRect((x)*10,200+(y)*10,10,10);
+		ofRect((x)*10,image.getHeight()+(y)*10,10,10);
 		ofPopStyle();
 		}
+	}
+	
+	for(int y = 0 ; y < row ; y++)
+	{
+		ofPushStyle();
+		ofSetColor((int)led->txBuffer[y*3], (int)led->txBuffer[y*3+1], (int)led->txBuffer[y*3+2]);
+		ofRect((y)*10,ofGetHeight()-20,10,10);
+		ofPopStyle();
 	}
 }
 
