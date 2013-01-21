@@ -16,11 +16,16 @@ void testApp::setup(){
 	row = image.getHeight();
 	col = image.getWidth();
 	numLED = col;
-	
+
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	led = new ofxLEDsLPD8806(numLED);
-	
+	for(int i = 0 ; i< numLED ; i++)
+	{
+		float x = 50+20+(i%col)*ptSize;
+		float y = 100+20+(i/col)*ptSize;
+		led->addLED(i,ofVec2f(x,y));
+	}
 #ifdef TARGET_LINUX_ARM
 	if(spi.connect())
 	{
@@ -62,10 +67,10 @@ void testApp::threadedFunction()
 		if( lock() ){
 			
 			led->setPixels(&colors[counter],row);
-			for(int i=0 ; i < led->txBuffer.size() ; i++)
-			{
-				cout << int(led->txBuffer[i]) << "\t";
-			}
+//			for(int i=0 ; i < led->txBuffer.size() ; i++)
+//			{
+//				cout << int(led->txBuffer[i]) << "\t";
+//			}
 #ifdef TARGET_LINUX_ARM
 			spi.send(led->txBuffer);
 #endif
