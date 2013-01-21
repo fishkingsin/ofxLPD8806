@@ -1,6 +1,6 @@
 //
 //  ofxLPD8806.h
-//  
+//
 //
 //  Created by james KONG on 18/1/13.
 //
@@ -9,13 +9,13 @@
 #pragma once
 
 #include "ofMain.h"
-#ifdef TARGET_LINUX_ARM 
+#ifdef TARGET_LINUX_ARM
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/types.h>
 #include <linux/spi/spidev.h>
-
+#endif
 class ofxLPD8806
 {
 public:
@@ -29,4 +29,3 @@ private:
 	int spi_device;
 	bool connected;
 };
-#endif

@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxLPD8806.h"
-#include "ofxLEDsLPD8806.h"
+
 class testApp : public ofBaseApp , public ofThread{
 	public:
 		void setup();
@@ -21,9 +21,8 @@ class testApp : public ofBaseApp , public ofThread{
 	
 		//--------------------------
 		void threadedFunction();
-	ofxLEDsLPD8806 *led;
-#ifdef TARGET_LINUX_ARM
+
 	ofxLPD8806 spi;
-#endif
+
 	ofImage image;
 };

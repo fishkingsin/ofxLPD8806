@@ -1,13 +1,12 @@
 //
 //  ofxLPD8806.cpp
-//  
+//
 //
 //  Created by james KONG on 18/1/13.
 //
 //
 
 #include "ofxLPD8806.h"
-#ifdef TARGET_LINUX_ARM
 ofxLPD8806::ofxLPD8806()
 {
 	device = "/dev/spidev0.0";
@@ -16,10 +15,13 @@ ofxLPD8806::ofxLPD8806()
 }
 ofxLPD8806::~ofxLPD8806()
 {
+#ifdef TARGET_LINUX_ARM
 	close(spi_device);
+#endif
 }
 bool ofxLPD8806::connect()
 {
+#ifdef TARGET_LINUX_ARM
 	spi_device = open(device.c_str(),O_WRONLY);
 	if(spi_device<0) {
 		fprintf(stderr, "Can't open device.\n");
@@ -31,16 +33,23 @@ bool ofxLPD8806::connect()
 		connected = false;
 	}else connected = true;
 	return connected;
+#else
+	return false;
+#endif
+	
 }
 
 //--------------------------------------------------------------
 void ofxLPD8806::send(const std::vector<uint8_t>& data)
 {
+#ifdef TARGET_LINUX_ARM
 	if (connected)
 		write(spi_device, (char*)data.data(), data.size());
+#endif
 }
 
 int ofxLPD8806::spi_init(int filedes) {
+#ifdef TARGET_LINUX_ARM
 	int ret;
 	const uint8_t mode = SPI_MODE_0;
 	const uint8_t bits = 8;
@@ -62,5 +71,5 @@ int ofxLPD8806::spi_init(int filedes) {
 	}
 	
 	return 0;
-}
 #endif
+}

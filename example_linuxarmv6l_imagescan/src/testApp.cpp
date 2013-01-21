@@ -25,14 +25,8 @@ void testApp::setup(){
 
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	led = new ofxLEDsLPD8806(numLED);
-	for(int i = 0 ; i< numLED ; i++)
-	{
-		float x = 50+20+(i%col)*ptSize;
-		float y = 100+20+(i/col)*ptSize;
-		led->addLED(i,ofVec2f(x,y));
-	}
-#ifdef TARGET_LINUX_ARM
+
+
 	if(spi.connect())
 	{
 		ofLogNotice()<<"connected to SPI";
@@ -41,7 +35,7 @@ void testApp::setup(){
 	{
 		ofLogNotice()<<"fails to connect SPI";
 	}
-#endif
+
 
 	colors = new vector<uint8_t>[col];
 	
@@ -67,10 +61,17 @@ void testApp::exit()
 {
 	stopThread();
 	ofLogVerbose("spi")<< "close and clear led";
-	led->clear(0);
-#ifdef TARGET_LINUX_ARM
-	spi.send(led->txBuffer);
-#endif
+	for(int y = 0 ; y < row ; y++)
+	{
+		
+		colors[0][y*3] = GAMMA[0];
+		colors[0][y*3+1] = GAMMA[0];
+		colors[0][y*3+2] = GAMMA[0];
+	}
+
+
+	spi.send(colors[0]);
+
 	
 }
 //--------------------------------------------------------------
@@ -80,18 +81,7 @@ void testApp::threadedFunction()
 		if( lock() ){
 			for(int i = 0 ; i < col;i++)
 			{
-//				led->setPixels(colors[i].data(),row);
-//			for(int i=0 ; i < led->txBuffer.size() ; i++)
-//			{
-//				cout << int(led->txBuffer[i]) << "\t";
-//			}
-	#ifdef TARGET_LINUX_ARM
-//				spi.send(led->txBuffer);
 				spi.send(colors[i]);
-	#endif
-				
-				
-				
 				usleep(1000);
 			}
 			usleep(1000000);
@@ -106,18 +96,18 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	image.draw(0,0);
-	
-	for(int x = 0 ; x < col ; x++)
-	{
-		for(int y = 0 ; y < row ; y++)
-		{
-		ofPushStyle();
-		ofSetColor((int)colors[x][y*3], (int)colors[x][y*3+1], (int)colors[x][y*3+2]);
-		ofRect((x)*10,image.getHeight()+(y)*10,10,10);
-		ofPopStyle();
-		}
-	}
+//	image.draw(0,0);
+//	
+//	for(int x = 0 ; x < col ; x++)
+//	{
+//		for(int y = 0 ; y < row ; y++)
+//		{
+//		ofPushStyle();
+//		ofSetColor((int)colors[x][y*3], (int)colors[x][y*3+1], (int)colors[x][y*3+2]);
+//		ofRect((x)*10,image.getHeight()+(y)*10,10,10);
+//		ofPopStyle();
+//		}
+//	}
 	
 }
 
