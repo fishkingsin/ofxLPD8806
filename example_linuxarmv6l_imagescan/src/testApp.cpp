@@ -53,8 +53,8 @@ void testApp::setup(){
 		for(int y = 0 ; y < row ; y++)
 		{
 			int i = (x+(y*col))*3;
-			colors[x].push_back(GAMMA[(int)pixels[i]]);
 			colors[x].push_back(GAMMA[(int)pixels[i+1]]);
+			colors[x].push_back(GAMMA[(int)pixels[i]]);
 			colors[x].push_back(GAMMA[(int)pixels[i+2]]);
 		}
 		colors[x].push_back(0);
