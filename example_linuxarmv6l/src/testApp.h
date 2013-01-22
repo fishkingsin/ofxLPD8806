@@ -26,5 +26,7 @@ class testApp : public ofBaseApp , public ofThread{
 	ofxLPD8806 spi;
 #endif
 	int mode;
+	ofColor color;
+	std::vector<ofColor>colors;
 	
 };

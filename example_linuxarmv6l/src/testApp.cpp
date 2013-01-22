@@ -6,8 +6,7 @@ int SQAURE_ROOT =int(sqrt((float)col));
 float ptSize = 5;
 int counter = 0;
 
-ofColor color;
-std::vector<ofColor>colors;
+
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -32,7 +31,7 @@ void testApp::setup(){
 }
 void testApp::exit()
 {
-//	stopThread();
+	stopThread();
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
 #ifdef TARGET_LINUX_ARM
