@@ -1,2 +1,1 @@
-ofxLEDs
 ofxLPD8806
