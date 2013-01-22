@@ -14,20 +14,20 @@ void testApp::setup(){
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	led = new ofxLEDsLPD8806(numLED);
-	for(int i = 0 ; i< numLED ; i++)
-	{
-		float x = 50+20+(i%col)*ptSize;
-		float y = 100+20+(i/col)*ptSize;
-		led->addLED(i,ofVec2f(x,y));
-	}
+//	for(int i = 0 ; i< numLED ; i++)
+//	{
+//		float x = 50+20+(i%col)*ptSize;
+//		float y = 100+20+(i/col)*ptSize;
+//		led->addLED(i,ofVec2f(x,y));
+//	}
 #ifdef TARGET_LINUX_ARM
 	spi.connect();
 	ofLogNotice()<<"connected to SPI";
 #endif
 
 	colors.assign(numLED,ofColor());
-	startThread();
-	
+	startThread(false,false);
+	mode = 0;
 }
 void testApp::exit()
 {
