@@ -25,4 +25,6 @@ class testApp : public ofBaseApp , public ofThread{
 #ifdef TARGET_LINUX_ARM
 	ofxLPD8806 spi;
 #endif
+	int mode;
+	
 };

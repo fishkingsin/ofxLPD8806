@@ -43,7 +43,7 @@ void testApp::setup(){
 
 	numLED = row;
 
-	ofSetFrameRate(120);
+	ofSetFrameRate(25);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 
 
@@ -75,7 +75,7 @@ void testApp::setup(){
 }
 void testApp::exit()
 {
-	stopThread();
+	stopThread();	
 	ofLogVerbose("spi")<< "close and clear led";
 	for(int y = 0 ; y < row ; y++)
 	{
@@ -95,11 +95,13 @@ void testApp::threadedFunction()
 {
 	while( isThreadRunning() != 0 ){
 		if( lock() ){
-			
-			for(int i = 0 ; i < col;i++)
+			if(!lockPixel)
 			{
-				spi.send(colors[i]);
-				usleep(1000);
+				for(int i = 0 ; i < col;i++)
+				{
+					spi.send(colors[i]);
+					usleep(1000);
+				}
 			}
 			unlock();
 		}
@@ -107,6 +109,7 @@ void testApp::threadedFunction()
 }
 //--------------------------------------------------------------
 void testApp::update(){
+	lockPixel = true;
 	int frameIndex = ofGetFrameNum() % pixels.size();
 	for(int x = 0 ; x < col ; x++)
 	{
@@ -119,6 +122,7 @@ void testApp::update(){
 		}
 		
 	}
+	lockPixel = false;
 }
 
 //--------------------------------------------------------------

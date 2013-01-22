@@ -23,9 +23,11 @@ public:
 	~ofxLPD8806();
 	bool connect();
 	void send(const std::vector<uint8_t>& data);
+	u_int8_t	toGamma(u_int8_t c);
 private:
 	int spi_init(int filedes);
 	string device;
 	int spi_device;
 	bool connected;
+	u_int8_t GAMMA[256];
 };

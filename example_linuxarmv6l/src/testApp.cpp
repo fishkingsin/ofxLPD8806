@@ -5,26 +5,13 @@ int numLED = col*row;
 int SQAURE_ROOT =int(sqrt((float)col));
 float ptSize = 5;
 int counter = 0;
-//unsigned char *gamma;
+
 ofColor color;
 std::vector<ofColor>colors;
 
-void drawGraphic(int mode)
-{
-	ofPushStyle();
-	ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-	
-	for(int i = 0 ; i < 1; i++)
-	{
-		ofSetColor(ofColor::fromHsb(i%360, 255, 255),200);
-		ofCircle(int(ofGetFrameNum()+i*(SQAURE_ROOT)-16)%numLED, 0, SQAURE_ROOT*0.5);
-	}
-	ofDisableBlendMode();
-	ofPopStyle();
-	
-}
 //--------------------------------------------------------------
 void testApp::setup(){
+	
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	led = new ofxLEDsLPD8806(numLED);
@@ -38,18 +25,14 @@ void testApp::setup(){
 	spi.connect();
 	ofLogNotice()<<"connected to SPI";
 #endif
-	//	gamma = new unsigned char[256];
-	//	for (i = 0 ; i < 256;i++)
-	//	{
-	//		int shift = powf((i*1.0f) / 255.0, 2.5) * 127.0 + 0.5;
-	//		gamma[i] = (0x80 | shift)-127;
-	//	}
+
 	colors.assign(numLED,ofColor());
 	startThread();
+	
 }
 void testApp::exit()
 {
-	stopThread();
+//	stopThread();
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
 #ifdef TARGET_LINUX_ARM
@@ -61,18 +44,12 @@ void testApp::threadedFunction()
 {
 	while( isThreadRunning() != 0 ){
 		if( lock() ){
-			for(int i =0 ; i < colors.size(); i++)
-			{
-				if(i==counter)colors[i] = ofColor(255,0,0);
-				else colors[i] = ofColor::black;
-				
-			}
+			
 			led->setPixels(colors);
 #ifdef TARGET_LINUX_ARM
 			spi.send(led->txBuffer);
 #endif
-			counter++;
-			counter%=colors.size();
+			
 			unlock();
 			usleep(10000);
 		}
@@ -80,48 +57,99 @@ void testApp::threadedFunction()
 }
 //--------------------------------------------------------------
 void testApp::update(){
-	led->clear(0);
 
-	led->renderBuffer.begin();
+	if(ofGetFrameNum()%200==0)
+	{
+		#ifdef TARGET_LINUX_ARM
+		mode++;
+		mode%=10;
+		#endif
+
+
+		
+		
+	}
+
 	
-	//draw video as 8px width,height
-	//draw line by line horizontally
-	//[8 px first row ][8 px second row ]
-	drawGraphic(0);
-	led->renderBuffer.end();
-	
-	led->encode();
-//	color = ofColor::fromHsb(counter,125,255);
-//	led->clear(color);
-	
+	if(mode==0)
+	{
+		for(int i =0 ; i < colors.size(); i++)
+		{
+			if(i==counter)colors[i] = ofColor(255,0,0);
+			else colors[i] = ofColor::black;
+			
+		}
+	}
+	else if (mode==1)
+	{
+		for(int i =0 ; i < colors.size(); i++)
+		{
+			if(i==counter)colors[i] = ofColor(0,255,0);
+			else colors[i] = ofColor::black;
+			
+		}
+	}
+	else if (mode==2)
+	{
+		for(int i =0 ; i < colors.size(); i++)
+		{
+			if(i==counter)colors[i] = ofColor(0,0,255);
+			else colors[i] = ofColor::black;
+			
+		}
+	}
+	else if (mode==3)
+	{
+		for(int i =0 ; i < colors.size(); i++)
+		{
+			float h = (((i+counter)%colors.size()*1.0f)/colors.size());
+			colors[i] = ofColor::fromHsb(255*h, 256, 256);
+			
+		}
+	}
+	else if (mode==4)
+	{
+		for(int i =0 ; i < colors.size(); i++)
+		{
+			
+			float h = sinf((((i+counter*1.0f)/colors.size())*TWO_PI))+1;
+			colors[i] = ofColor::fromHsb(ofGetFrameNum()%255, 125*h, 255);
+			
+		}
+	}
+	else if (mode==5)//breath
+	{
+		float h = sinf((ofGetElapsedTimef()*0.1)*TWO_PI)+1;
+		for(int i =0 ; i < colors.size(); i++)
+		{
+			
+
+			colors[i] = ofColor(125*h);
+			
+		}
+	}
+	counter++;
+	counter%=colors.size();
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
 	ofBackground(125);
+	int SIZE = ofGetWidth()/32;
+	for(int i =0 ; i < colors.size(); i++)
+	{
+		ofSetColor(colors[i]);
+		ofRect((i%32)*SIZE,(i/32)*SIZE,SIZE-1,SIZE-1);
+	}
 	
-	
-	
-	ofPushMatrix();
-	ofScale(10, 10);
-	//draw again to preview
-	drawGraphic(0);
-	led->encodedBuffer.draw(0,0);
-	ofPopMatrix();
-	
-//	ofPushStyle();
-//	ofNoFill();
-//	ofSetColor(0, 255, 0);
-//	ofRect(0,0,numLED*10,10);
-//	ofPopStyle();
-	
-//	led->draw(ptSize);
-//	ofDrawBitmapString(ofToString(ofGetFrameRate()),20,ofGetHeight()-100);
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-	
+	if(key>='0' || key <= '9')
+	{
+		mode = key-'0';
+	}
 }
 
 //--------------------------------------------------------------

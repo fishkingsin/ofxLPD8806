@@ -12,6 +12,10 @@ ofxLPD8806::ofxLPD8806()
 	device = "/dev/spidev0.0";
 	connected = false;
 	spi_device = 0;
+	for (int i = 0 ; i < 256; i++)
+	{
+		GAMMA[i] = 0x80 | int(pow(float(i) / 255.0, 2.5) * 127.0 + 0.5);
+	}
 }
 ofxLPD8806::~ofxLPD8806()
 {
@@ -72,4 +76,8 @@ int ofxLPD8806::spi_init(int filedes) {
 	
 	return 0;
 #endif
+}
+u_int8_t ofxLPD8806::toGamma(u_int8_t c)
+{
+	return GAMMA[c];
 }

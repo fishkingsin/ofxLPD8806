@@ -29,4 +29,5 @@ class testApp : public ofBaseApp , public ofThread{
 	vector<uint8_t> *colors;
 	
 	u_int8_t GAMMA[256];
+	bool lockPixel;
 };
