@@ -11,7 +11,7 @@ int counter = 0;
 //--------------------------------------------------------------
 void testApp::setup(){
 	
-	ofSetFrameRate(120);
+	ofSetFrameRate(24);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 
 	for (int i = 0 ; i < 256; i++)
