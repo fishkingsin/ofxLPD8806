@@ -22,9 +22,9 @@ class testApp : public ofBaseApp , public ofThread{
 		//--------------------------
 		void threadedFunction();
 	ofxLEDsLPD8806 *led;
-#ifdef TARGET_LINUX_ARM
+
 	ofxLPD8806 spi;
-#endif
+
 	int mode;
 	ofColor color;
 	std::vector<ofColor>colors;

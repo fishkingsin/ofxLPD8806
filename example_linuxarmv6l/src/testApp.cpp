@@ -20,10 +20,11 @@ void testApp::setup(){
 //		float y = 100+20+(i/col)*ptSize;
 //		led->addLED(i,ofVec2f(x,y));
 //	}
-#ifdef TARGET_LINUX_ARM
-	spi.connect();
-	ofLogNotice()<<"connected to SPI";
-#endif
+
+	if(	spi.connect())
+	{
+		ofLogNotice()<<"connected to SPI";
+	}
 
 	colors.assign(numLED,ofColor());
 	startThread(false,false);
@@ -34,9 +35,9 @@ void testApp::exit()
 	stopThread();
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
-#ifdef TARGET_LINUX_ARM
+
 	spi.send(led->txBuffer);
-#endif
+
 }
 //--------------------------------------------------------------
 void testApp::threadedFunction()
@@ -45,9 +46,9 @@ void testApp::threadedFunction()
 		if( lock() ){
 			
 			led->setPixels(colors);
-#ifdef TARGET_LINUX_ARM
+
 			spi.send(led->txBuffer);
-#endif
+
 			
 			unlock();
 			usleep(10000);
