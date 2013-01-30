@@ -4,9 +4,7 @@ int col = 16;
 int numLED = col*row;
 int SQAURE_ROOT =int(sqrt((float)col));
 float ptSize = 5;
-int counter = 0;
-
-
+static int counter = 0;
 
 //--------------------------------------------------------------
 void testApp::setup(){
@@ -86,9 +84,9 @@ void testApp::exit()
 		for(int y = 0 ; y < row ; y++)
 		{
 			int i = (x+(y*col))*3;
-			colors[y*3+1] = GAMMA[0];
-			colors[y*3] = GAMMA[0];
-			colors[y*3+2] = GAMMA[0];
+			colors[i+1] = GAMMA[0];
+			colors[i] = GAMMA[0];
+			colors[i+2] = GAMMA[0];
 		}
 		
 	}
@@ -125,7 +123,8 @@ void testApp::threadedFunction()
 //--------------------------------------------------------------
 void testApp::update(){
 	lockPixel = true;
-	int frameIndex = ofGetFrameNum() % pixels.size();
+	counter++;
+	int frameIndex = counter % pixels.size();
 	for(int x = 0 ; x < col ; x++)
 	{
 		for(int y = 0 ; y < row ; y++)
