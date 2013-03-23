@@ -13,3 +13,12 @@
 *.a
 *.app
 *.d
+example/bin/example
+
+example_16x16/bin/example_16x16
+
+example_linuxarmv6l/bin/example_linuxarmv6l
+
+example_linuxarmv6l_animation/bin/example_linuxarmv6l_animation
+
+example_linuxarmv6l_imagescan/bin/example_linuxarmv6l_imagescan
