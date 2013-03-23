@@ -12,7 +12,7 @@ void testApp::setup(){
 	player.play();
 	player.setPaused(false);
 	player.setLoopState(OF_LOOP_NORMAL);
-	ofSetWindowShape(player.getWidth(), player.getHeight());
+	ofSetWindowShape(player.getWidth()*2, player.getHeight());
 	for (int i = 0 ; i < 256; i++)
 	{
 		GAMMA[i] = 0x80 | int(pow(float(i) / 255.0, 2.5) * 127.0 + 0.5);
