@@ -31,7 +31,7 @@ class testApp : public ofBaseApp , public ofThread{
 	vector <ofPixels> pixels;
 	vector<uint8_t> colors;
 	
-	u_int8_t GAMMA[256];
+	
 	bool lockPixel;
 	ofTexture tex;
 };

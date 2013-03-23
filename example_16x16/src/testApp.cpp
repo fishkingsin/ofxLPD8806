@@ -12,10 +12,6 @@ void testApp::setup(){
 	ofSetFrameRate(24);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 
-	for (int i = 0 ; i < 256; i++)
-	{
-		GAMMA[i] = 0x80 | int(pow(float(i) / 255.0, 2.5) * 127.0 + 0.5);
-	}
 	
 	ofDirectory dir;
     dir.allowExt("jpg");
@@ -130,9 +126,9 @@ void testApp::update(){
 		for(int y = 0 ; y < row ; y++)
 		{
 			int i = (x+(y*col))*3;
-			colors[i+1] = GAMMA[pixels[frameIndex].getPixels()[i]];
-			colors[i] = GAMMA[pixels[frameIndex].getPixels()[i+1]];
-			colors[i+2] = GAMMA[pixels[frameIndex].getPixels()[i+2]];
+			colors[i+1] = spi.toGamma(pixels[frameIndex].getPixels()[i]);
+			colors[i] = spi.toGamma(pixels[frameIndex].getPixels()[i+1]);
+			colors[i+2] = spi.toGamma(pixels[frameIndex].getPixels()[i+2]);
 		}
 		
 	}

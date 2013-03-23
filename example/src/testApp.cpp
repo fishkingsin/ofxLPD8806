@@ -5,7 +5,7 @@ int numLED = col*row;
 int SQAURE_ROOT =int(sqrt((float)col));
 float ptSize = 5;
 int counter = 0;
-//unsigned char *gamma;
+
 ofColor color;
 void drawGraphic(int mode)
 {
@@ -35,12 +35,7 @@ void testApp::setup(){
 	spi.connect();
 	ofLogNotice()<<"connected to SPI";
 #endif
-	//	gamma = new unsigned char[256];
-	//	for (i = 0 ; i < 256;i++)
-	//	{
-	//		int shift = powf((i*1.0f) / 255.0, 2.5) * 127.0 + 0.5;
-	//		gamma[i] = (0x80 | shift)-127;
-	//	}
+	
 }
 void testApp::exit()
 {
@@ -62,9 +57,7 @@ void testApp::update(){
 	drawGraphic(0);
 	led->renderBuffer.end();
 	
-	//	led->encode();
-	//	color = ofColor::fromHsb(counter,125,255);
-	//	led->clear(color);
+
 	
 #ifdef TARGET_LINUX_ARM
 	spi.send(led->txBuffer);

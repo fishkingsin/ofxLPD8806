@@ -1,6 +1,6 @@
 #include "testApp.h"
 int row = 1;
-int col = 32;
+int col = 160;
 int numLED = col*row;
 int SQAURE_ROOT =int(sqrt((float)col));
 float ptSize = 5;
@@ -21,6 +21,8 @@ void testApp::setup(){
 	
 	row = image.getHeight();
 	col = image.getWidth();
+	ofLogNotice("Image")<<"width : " << col << " height : " << row;
+	
 	numLED = row;
 
 	ofSetFrameRate(120);
@@ -51,6 +53,7 @@ void testApp::setup(){
 			colors[x].push_back(GAMMA[(int)pixels[i]]);
 			colors[x].push_back(GAMMA[(int)pixels[i+2]]);
 		}
+		colors[x].push_back(0);
 		colors[x].push_back(0);
 		colors[x].push_back(0);
 	}
