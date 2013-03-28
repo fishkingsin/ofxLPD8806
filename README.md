@@ -21,17 +21,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Installation
 ------------
-*prepare SD card image [http://www.raspberrypi.org/downloads] download and install lastest wheezy image
-*INSTALL  First you'll need to download the beta "Wheezy" debian package from here. Then follow the normal instructions for installing it to your board. Once you have installed it and booted up for the second time i ran some updates (That took hours!!) <pre>sudo apt-get update
+prepare SD card image [http://www.raspberrypi.org/downloads] download and install lastest wheezy image
+INSTALL  First you'll need to download the beta "Wheezy" debian package from here. Then follow the normal instructions for installing it to your board. Once you have installed it and booted up for the second time i ran some updates (That took hours!!) 
+<pre>sudo apt-get update
 sudo apt-get upgrade
 sudo modprobe spi_bcm2708
 sudo rpi-update</pre>
-*SPI BACKGROUND While that is updating lets talk a little bit of SPI background knowledge is needed in order to get this working. First off Serial Peripheral interface (SPI) is made up of 4 wires normally. It is a standard that was designed by Motorola for use with their micro controllers. If you're interested in learning more about SPI i've added the Wikipedia link. Here is what a standard SPI setup looks like, multiple slaves is optional.
+SPI BACKGROUND While that is updating lets talk a little bit of SPI background knowledge is needed in order to get this working. First off Serial Peripheral interface (SPI) is made up of 4 wires normally. It is a standard that was designed by Motorola for use with their micro controllers. If you're interested in learning more about SPI i've added the Wikipedia link. Here is what a standard SPI setup looks like, multiple slaves is optional.
 
-#SS - Slave Select (Beagleboard community calles this Chip Select (CS))
-#MOSI - Master Out Slave In
-#MISO - Master In Slave Out
-#CLK - Clock
+SS - Slave Select (Beagleboard community calles this Chip Select (CS))
+MOSI - Master Out Slave In
+MISO - Master In Slave Out
+CLK - Clock
 
 [[Image:SPI_layout.png]]
 <pre>sudo apt-get install git
@@ -46,17 +47,17 @@ you will see somthing like that and uncomment  the blacklist spi-bcm2708 by eras
  blacklist i2c-bcm2708
 
 [[Image:SPIdev.PNG]]
-*Next we want to short the MISO and MOSI pins. Located as GPIO 9 & GPIO 10 as seen below.
+Next we want to short the MISO and MOSI pins. Located as GPIO 9 & GPIO 10 as seen below.
 [[Image:GPIOs.png]]
-*connect led strip to raspberry pi as below
+connect led strip to raspberry pi as below
 [[Image:diagram.png]]
-*clone openframeworks raspberry pi develop-raspberrypi branch following this guide [https://github.com/openFrameworks-RaspberryPi/openFrameworks/wiki/Raspberry-Pi-Getting-Started Raspberry-Pi-Getting-Started ]
+clone openframeworks raspberry pi develop-raspberrypi branch following this guide [https://github.com/openFrameworks-RaspberryPi/openFrameworks/wiki/Raspberry-Pi-Getting-Started Raspberry-Pi-Getting-Started ]
 you may alos take a deep look in this [https://github.com/openFrameworks-RaspberryPi/openFrameworks/wiki/RaspberryPi OF RaspberryPi Wiki]
-*clone addons 
+clone addons 
 <pre>git clone https://github.com/fishkingsin/ofxLPD8806
 git clone https://github.com/fishkingsin/ofxLEDs</pre>
 to your openframeowrks addons folder
-*compile
+compile
 <pre>cd "YOUR_OF_ROOT"/addons/ofxLPD8806/example/
 make </pre>
 
