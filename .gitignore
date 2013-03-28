@@ -22,3 +22,7 @@ example_linuxarmv6l/bin/example_linuxarmv6l
 example_linuxarmv6l_animation/bin/example_linuxarmv6l_animation
 
 example_linuxarmv6l_imagescan/bin/example_linuxarmv6l_imagescan
+
+*.xcuserstate
+
+*.plist
