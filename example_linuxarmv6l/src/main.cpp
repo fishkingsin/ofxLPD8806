@@ -10,7 +10,7 @@ int main( ){
 	ofGLES2Renderer * renderer = new ofGLES2Renderer();
 	ofSetCurrentRenderer(ofPtr<ofBaseRenderer>(renderer));
 #endif
-	ofSetupOpenGL(1024,768, OF_WINDOW);			// <-------- setup the GL context
+	ofSetupOpenGL(500,10, OF_WINDOW);			// <-------- setup the GL context
 
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
