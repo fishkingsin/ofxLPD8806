@@ -1,0 +1,7 @@
+ofxNetwork
+ofxOsc
+ofxXmlSettings
+ofxGifDecoder
+ofxImageSequence
+ofxLEDs
+ofxLPD8806
