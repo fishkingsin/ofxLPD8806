@@ -123,8 +123,10 @@ void testApp::draw(){
     }
     led->renderBuffer.end();
     led->encode();
-    led->encodedBuffer.draw(0,0);
-
+    ofPushMatrix();
+    ofScale(5,5);
+    led->encodedBuffer.draw(20,40);
+    ofPopMatrix();
 }
 
 //--------------------------------------------------------------
