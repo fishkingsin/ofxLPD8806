@@ -1,5 +1,5 @@
 #include "testApp.h"
-
+int y = 0;
 //--------------------------------------------------------------
 void testApp::setup(){
     ofSetLogLevel(OF_LOG_VERBOSE);
@@ -111,10 +111,7 @@ void testApp::update(){
 		}
 		
 	}
-}
-int y = 0;
-//--------------------------------------------------------------
-void testApp::draw(){
+    
     led->renderBuffer.begin();
     for( int i = 0 ; i < sequences.size() ;i++)
     {
@@ -123,6 +120,17 @@ void testApp::draw(){
     }
     led->renderBuffer.end();
     led->encode();
+    
+    for(int i = 0 ; i < led->txBuffer.size() ; i++)
+    {
+        printf( "%u | ",led->txBuffer[i]) ;
+        if((i+1)%3==0)cout << "\n";
+    }
+}
+
+//--------------------------------------------------------------
+void testApp::draw(){
+   
     ofPushMatrix();
     ofScale(5,5);
     led->encodedBuffer.draw(20,40);
