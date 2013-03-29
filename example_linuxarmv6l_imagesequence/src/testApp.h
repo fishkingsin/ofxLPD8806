@@ -46,4 +46,5 @@ public:
 //	std::vector<ofColor>colors;
     int numLED;
     
+    ofPixels pix;
 };

@@ -60,7 +60,7 @@ void testApp::setup(){
     
 //	colors.assign(numLED,ofColor());
 //	startThread(false,false);
-
+    pix.allocate(numLED, 1, OF_IMAGE_COLOR);
 }
 void testApp::exit()
 {
@@ -120,12 +120,25 @@ void testApp::update(){
     }
     led->renderBuffer.end();
     led->encode();
+    led->encodedBuffer.readToPixels(pix);
+    
     spi.send(led->txBuffer);
-    for(int i = 0 ; i < led->txBuffer.size() ; i++)
+    for(int j = 0 ; j < pix.getHeight() ; j++)
     {
-        printf( "%u | ",led->txBuffer[i]) ;
-        if((i+1)%3==0)cout << "\n";
+        for(int i = 0 ; i < pix.getWidth() ; i++)
+        {
+            ofColor c = pix.getColor(i, j);
+            printf( "%i | %i | %i | ",c.r,c.g,c.b) ;
+//            if((i+1)%3==0)
+                cout << "\n";
+        }
     }
+
+//    for(int i = 0 ; i < led->txBuffer.size() ; i++)
+//    {
+//        printf( "%u | ",led->txBuffer[i]) ;
+//        if((i+1)%3==0)cout << "\n";
+//    }
 }
 
 //--------------------------------------------------------------
