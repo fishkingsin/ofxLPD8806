@@ -13,4 +13,20 @@
 *.a
 *.app
 *.d
+<<<<<<< HEAD
 ./example_linuxarmv6l_animation/bin/example_linuxarmv6l_animation
+=======
+example/bin/example
+
+example_16x16/bin/example_16x16
+
+example_linuxarmv6l/bin/example_linuxarmv6l
+
+example_linuxarmv6l_animation/bin/example_linuxarmv6l_animation
+
+example_linuxarmv6l_imagescan/bin/example_linuxarmv6l_imagescan
+
+*.xcuserstate
+
+*.plist
+>>>>>>> 6343d5966f774fe2f3f5ac7e6a7e470e605d83bc
