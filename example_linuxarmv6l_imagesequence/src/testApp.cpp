@@ -59,34 +59,34 @@ void testApp::setup(){
 	}
     
 //	colors.assign(numLED,ofColor());
-	startThread(false,false);
+//	startThread(false,false);
 
 }
 void testApp::exit()
 {
     ofLogToConsole();
-    stopThread();
+//    stopThread();
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
     
 	spi.send(led->txBuffer);
 }
-void testApp::threadedFunction()
-{
-	while( isThreadRunning() != 0 ){
-//		if( lock() ){
-			
-//			led->setPixels(colors);
-        
-			spi.send(led->txBuffer);
-            
-			
-//			unlock();
-        usleep(2);
-//			usleep(10000);
-//		}
-	}
-}
+//void testApp::threadedFunction()
+//{
+//	while( isThreadRunning() != 0 ){
+////		if( lock() ){
+//			
+////			led->setPixels(colors);
+//        
+//			spi.send(led->txBuffer);
+//            
+//			
+////			unlock();
+//        usleep(2);
+////			usleep(10000);
+////		}
+//	}
+//}
 //--------------------------------------------------------------
 void testApp::update(){
     if(weConnected){
@@ -120,7 +120,7 @@ void testApp::update(){
     }
     led->renderBuffer.end();
     led->encode();
-    
+    spi.send(led->txBuffer);
     for(int i = 0 ; i < led->txBuffer.size() ; i++)
     {
         printf( "%u | ",led->txBuffer[i]) ;

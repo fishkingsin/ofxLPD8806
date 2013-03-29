@@ -6,7 +6,7 @@
 #include "ofxXmlSettings.h"
 #include "ofxLPD8806.h"
 #include "ofxLEDsLPD8806.h"
-class testApp : public ofBaseApp  , public ofThread{
+class testApp : public ofBaseApp  {//, public ofThread{
     
     
 public:
@@ -36,7 +36,7 @@ public:
     
     //led
     //--------------------------
-    void threadedFunction();
+//    void threadedFunction();
 	ofxLEDsLPD8806 *led;
     
 	ofxLPD8806 spi;
