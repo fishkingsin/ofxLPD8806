@@ -59,9 +59,9 @@ void testApp::setup(){
 		for(int y = 0 ; y < row ; y++)
 		{
 			int i = (x+(y*col))*3;
-			colors.push_back(GAMMA[pixels[0][i+1]]);
-			colors.push_back(GAMMA[pixels[0][i]]);
-			colors.push_back(GAMMA[pixels[0][i+2]]);
+			colors.push_back(spi.toGamma(pixels[0][i+1]));
+			colors.push_back(spi.toGamma(pixels[0][i]));
+			colors.push_back(spi.toGamma(pixels[0][i+2]));
 		}
 		colors.push_back(0);
 		colors.push_back(0);
@@ -80,9 +80,9 @@ void testApp::exit()
 		for(int y = 0 ; y < row ; y++)
 		{
 			int i = (x+(y*col))*3;
-			colors[i+1] = GAMMA[0];
-			colors[i] = GAMMA[0];
-			colors[i+2] = GAMMA[0];
+			colors[i+1] = spi.toGamma(0);
+			colors[i] = spi.toGamma(0);
+			colors[i+2] = spi.toGamma(0);
 		}
 		
 	}
