@@ -114,14 +114,15 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-//    led->renderBuffer.begin();
+    led->renderBuffer.begin();
     for( int i = 0 ; i < sequences.size() ;i++)
     {
         sequences[i]->getFrameForTime(ofGetElapsedTimef())->draw(0,0);
     }
-//    led->renderBuffer.end();
-//    led->encode();
-//    led->encodedBuffer.draw(0,0);
+    led->renderBuffer.end();
+    led->encode();
+    
+    led->encodedBuffer.draw(0,0);
     
 }
 
