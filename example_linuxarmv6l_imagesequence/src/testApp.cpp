@@ -76,8 +76,8 @@ void testApp::threadedFunction()
 	while( isThreadRunning() != 0 ){
 //		if( lock() ){
 			
-			led->setPixels(colors);
-            
+//			led->setPixels(colors);
+        
 			spi.send(led->txBuffer);
             
 			
