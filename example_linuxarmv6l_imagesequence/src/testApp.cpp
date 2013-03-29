@@ -57,36 +57,17 @@ void testApp::setup(){
 	{
 		ofLogNotice()<<"connected to SPI";
 	}
-    
-//	colors.assign(numLED,ofColor());
-//	startThread(false,false);
-    pix.allocate(numLED, 1, OF_IMAGE_COLOR);
 }
 void testApp::exit()
 {
     ofLogToConsole();
-//    stopThread();
+
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
     
 	spi.send(led->txBuffer);
 }
-//void testApp::threadedFunction()
-//{
-//	while( isThreadRunning() != 0 ){
-////		if( lock() ){
-//			
-////			led->setPixels(colors);
-//        
-//			spi.send(led->txBuffer);
-//            
-//			
-////			unlock();
-//        usleep(2);
-////			usleep(10000);
-////		}
-//	}
-//}
+
 //--------------------------------------------------------------
 void testApp::update(){
     if(weConnected){
@@ -120,26 +101,9 @@ void testApp::update(){
     }
     led->renderBuffer.end();
     led->encode();
-    led->encodedBuffer.readToPixels(pix);
+
     
     spi.send(led->txBuffer);
-//    for(int j = 0 ; j < pix.getHeight() ; j++)
-//    {
-//        for(int i = 0 ; i < pix.getWidth() ; i++)
-//        {
-//            ofColor c = pix.getColor(i, j);
-//            printf( "%i | %i | %i | ",c.r,c.g,c.b) ;
-////            if((i+1)%3==0)
-//                cout << "\n";
-//        }
-//    }
-    
-
-//    for(int i = 0 ; i < led->txBuffer.size() ; i++)
-//    {
-//        printf( "%u | ",led->txBuffer[i]) ;
-//        if((i+1)%3==0)cout << "\n";
-//    }
 }
 
 //--------------------------------------------------------------

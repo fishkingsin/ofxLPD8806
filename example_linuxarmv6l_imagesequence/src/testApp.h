@@ -36,15 +36,12 @@ public:
     
     //led
     //--------------------------
-//    void threadedFunction();
+
 	ofxLEDsLPD8806 *led;
     
 	ofxLPD8806 spi;
     
 	int mode;
-//	ofColor color;
-//	std::vector<ofColor>colors;
     int numLED;
     
-    ofPixels pix;
 };
