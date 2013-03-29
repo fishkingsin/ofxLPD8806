@@ -74,16 +74,17 @@ void testApp::exit()
 void testApp::threadedFunction()
 {
 	while( isThreadRunning() != 0 ){
-		if( lock() ){
+//		if( lock() ){
 			
 			led->setPixels(colors);
             
 			spi.send(led->txBuffer);
             
 			
-			unlock();
-			usleep(10000);
-		}
+//			unlock();
+        usleep(2);
+//			usleep(10000);
+//		}
 	}
 }
 //--------------------------------------------------------------
@@ -111,19 +112,19 @@ void testApp::update(){
 		
 	}
 }
-
+int y = 0;
 //--------------------------------------------------------------
 void testApp::draw(){
     led->renderBuffer.begin();
     for( int i = 0 ; i < sequences.size() ;i++)
     {
-        sequences[i]->getFrameForTime(ofGetElapsedTimef())->draw(0,0);
+        ofTexture *tex = sequences[i]->getFrameForTime(ofGetElapsedTimef());
+        tex->draw(0,(y--)%int(tex->getHeight()));
     }
     led->renderBuffer.end();
     led->encode();
-    
     led->encodedBuffer.draw(0,0);
-    
+
 }
 
 //--------------------------------------------------------------
