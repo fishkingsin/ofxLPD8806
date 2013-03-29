@@ -13,3 +13,4 @@
 *.a
 *.app
 *.d
+./example_linuxarmv6l_animation/bin/example_linuxarmv6l_animation
