@@ -58,7 +58,7 @@ void testApp::setup(){
 		ofLogNotice()<<"connected to SPI";
 	}
     
-	colors.assign(numLED,ofColor());
+//	colors.assign(numLED,ofColor());
 	startThread(false,false);
 
 }

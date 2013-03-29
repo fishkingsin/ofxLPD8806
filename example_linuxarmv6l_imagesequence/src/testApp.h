@@ -42,8 +42,8 @@ public:
 	ofxLPD8806 spi;
     
 	int mode;
-	ofColor color;
-	std::vector<ofColor>colors;
+//	ofColor color;
+//	std::vector<ofColor>colors;
     int numLED;
     
 };
