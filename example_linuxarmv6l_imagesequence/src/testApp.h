@@ -1,12 +1,13 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxNetwork.h"
+#include "ofxOsc.h"
+
 #include "ofxImageSequence.h"
 #include "ofxXmlSettings.h"
 #include "ofxLPD8806.h"
 #include "ofxLEDsLPD8806.h"
-class testApp : public ofBaseApp  {//, public ofThread{
+class testApp : public ofBaseApp  {
     
     
 public:
@@ -25,9 +26,7 @@ public:
     void gotMessage(ofMessage msg);
     
     //tcp
-    ofxTCPClient client;
-    bool weConnected;
-    float connectTime , deltaTime ;
+
     string host;
     int port;
     
@@ -36,15 +35,10 @@ public:
     
     //led
     //--------------------------
-//    void threadedFunction();
-	ofxLEDsLPD8806 *led;
+    ofxLEDsLPD8806 *led;
     
 	ofxLPD8806 spi;
     
-	int mode;
-//	ofColor color;
-//	std::vector<ofColor>colors;
-    int numLED;
+	int numLED;
     
-    ofPixels pix;
 };

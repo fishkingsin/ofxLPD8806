@@ -43,12 +43,6 @@ void testApp::setup(){
         ofLogError("config.xml")<< "error load config";
     }
 
-    weConnected = client.setup(host,port);
-	//optionally set the delimiter to something else.  The delimter in the client and the server have to be the same
-	client.setMessageDelimiter("\n");
-	
-	connectTime = 0;
-	deltaTime = 0;
     
     
     led = new ofxLEDsLPD8806(numLED);
@@ -58,59 +52,20 @@ void testApp::setup(){
 		ofLogNotice()<<"connected to SPI";
 	}
     
-//	colors.assign(numLED,ofColor());
-//	startThread(false,false);
-    pix.allocate(numLED, 1, OF_IMAGE_COLOR);
+
 }
 void testApp::exit()
 {
+    // client.close();
     ofLogToConsole();
-//    stopThread();
+
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
     
 	spi.send(led->txBuffer);
 }
-//void testApp::threadedFunction()
-//{
-//	while( isThreadRunning() != 0 ){
-////		if( lock() ){
-//			
-////			led->setPixels(colors);
-//        
-//			spi.send(led->txBuffer);
-//            
-//			
-////			unlock();
-//        usleep(2);
-////			usleep(10000);
-////		}
-//	}
-//}
 //--------------------------------------------------------------
 void testApp::update(){
-    if(weConnected){
-		string cmd = client.receive();
-		if(cmd!="")
-		{
-			ofLogVerbose("TCP Client") << "CMD " << cmd;
-			int start_idx = 0;
-			int end_idx = cmd.find(";");
-			
-        }
-		if(!client.isConnected()){
-			weConnected = false;
-		}
-	}else{
-		//if we are not connected lets try and reconnect every 5 seconds
-		deltaTime = ofGetElapsedTimeMillis() - connectTime;
-		
-		if( deltaTime > 5000 ){
-			weConnected = client.setup(host,port);
-			connectTime = ofGetElapsedTimeMillis();
-		}
-		
-	}
     
     led->renderBuffer.begin();
     for( int i = 0 ; i < sequences.size() ;i++)
@@ -120,26 +75,10 @@ void testApp::update(){
     }
     led->renderBuffer.end();
     led->encode();
-    led->encodedBuffer.readToPixels(pix);
+    // led->encodedBuffer.readToPixels(pix);
     
     spi.send(led->txBuffer);
-//    for(int j = 0 ; j < pix.getHeight() ; j++)
-//    {
-//        for(int i = 0 ; i < pix.getWidth() ; i++)
-//        {
-//            ofColor c = pix.getColor(i, j);
-//            printf( "%i | %i | %i | ",c.r,c.g,c.b) ;
-////            if((i+1)%3==0)
-//                cout << "\n";
-//        }
-//    }
-    
 
-//    for(int i = 0 ; i < led->txBuffer.size() ; i++)
-//    {
-//        printf( "%u | ",led->txBuffer[i]) ;
-//        if((i+1)%3==0)cout << "\n";
-//    }
 }
 
 //--------------------------------------------------------------
