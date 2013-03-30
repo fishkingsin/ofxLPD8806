@@ -35,10 +35,20 @@ public:
     
     //led
     //--------------------------
+<<<<<<< HEAD
     ofxLEDsLPD8806 *led;
     
 	ofxLPD8806 spi;
     
 	int numLED;
+=======
+
+	ofxLEDsLPD8806 *led;
+    
+	ofxLPD8806 spi;
+    
+	int mode;
+    int numLED;
+>>>>>>> f27bce413cff43aefa50256dc91137919d370e33
     
 };

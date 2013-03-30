@@ -51,12 +51,11 @@ void testApp::setup(){
 	{
 		ofLogNotice()<<"connected to SPI";
 	}
-    
 
 }
 void testApp::exit()
 {
-    // client.close();
+
     ofLogToConsole();
 
 	ofLogVerbose("spi")<< "close and clear led";
@@ -64,6 +63,7 @@ void testApp::exit()
     
 	spi.send(led->txBuffer);
 }
+
 //--------------------------------------------------------------
 void testApp::update(){
     
@@ -75,9 +75,9 @@ void testApp::update(){
     }
     led->renderBuffer.end();
     led->encode();
-    // led->encodedBuffer.readToPixels(pix);
     
     spi.send(led->txBuffer);
+
 
 }
 
