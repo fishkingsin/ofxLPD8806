@@ -3,6 +3,7 @@
 	<LOG_LEVEL>0</LOG_LEVEL>
     <IP>127.0.0.1</IP>
     <PORT>7170</PORT>
+    <NUM_LED>160</NUM_LED>
     <SEQUENCES>
         <FRAMERATE>12</FRAMERATE>
         <SEQUENCE>./sequences</SEQUENCE>
