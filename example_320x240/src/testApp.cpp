@@ -21,7 +21,7 @@ void testApp::update(){
     ofClear(0);
     ofPushMatrix();
     ofTranslate(ofGetWidth()/2.0f-100,ofGetHeight()/2.0f-100);
-    ofRotateZ(ofGetFrameNum());
+    ofRotateZ(ofGetFrameNum()*0.1);
     ofPushStyle();
     ofFill();
     ofSetColor(ofColor::red);
@@ -88,8 +88,8 @@ void testApp::update(){
 void testApp::draw(){
     ofPushMatrix();
 
-    led->encodedBuffer.draw(20,20);
-    led->renderBuffer.draw(20,20+260);
+    led->encodedBuffer.draw(0,0);
+
     ofPopMatrix();
 
 }
