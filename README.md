@@ -70,7 +70,7 @@ Dependencies
 
 Compatibility
 ------------
-https://github.com/openFrameworks-RaspberryPi/openFrameworks develop-raspberrypi
+http://github.com/openFrameworks/openFrameworks
 
 Known issues
 ------------
