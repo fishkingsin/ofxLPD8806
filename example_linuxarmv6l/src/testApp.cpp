@@ -13,42 +13,51 @@ void testApp::setup(){
 	
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	led = new ofxLEDsLPD8806(numLED);
+	led = new ofxLEDsLPD8806Frame();
+    led->resize(numLED);
 //	for(int i = 0 ; i< numLED ; i++)
 //	{
 //		float x = 50+20+(i%col)*ptSize;
 //		float y = 100+20+(i/col)*ptSize;
 //		led->addLED(i,ofVec2f(x,y));
 //	}
-
+#ifdef TARGET_LINUX_ARM
 	if(	spi.connect())
 	{
 		ofLogNotice()<<"connected to SPI";
 	}
-
+#endif
 	colors.assign(numLED,ofColor());
 	startThread(false,false);
 	mode = 0;
+    pixels.reserve(numLED*3);
 }
 void testApp::exit()
 {
 	stopThread();
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
-
+#ifdef TARGET_LINUX_ARM
 	spi.send(led->txBuffer);
-
+#endif
 }
 //--------------------------------------------------------------
 void testApp::threadedFunction()
 {
 	while( isThreadRunning() != 0 ){
 		if( lock() ){
-			
-			led->setPixels(colors);
-
+            for(int i = 0 ; i < numLED ; i++)
+            {
+                pixels[i*3] = (uint8_t)((colors[i].b>>1) | 0x80);
+                pixels[i*3+1] = (uint8_t)((colors[i].r>>1) | 0x80);
+                pixels[i*3+2] = (uint8_t)((colors[i].g>>1) | 0x80);
+            
+                
+            }
+			led->update(pixels);
+#ifdef TARGET_LINUX_ARM
 			spi.send(led->txBuffer);
-
+#endif
 			
 			unlock();
 			usleep(10000);

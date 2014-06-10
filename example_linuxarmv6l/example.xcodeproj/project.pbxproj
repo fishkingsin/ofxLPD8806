@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		106d18a4d26dd8d1ca3e2fe0fa8955c7 /* ofxLEDsLPD8806.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ccda013394f7891c6674f683eee3dd6 /* ofxLEDsLPD8806.cpp */; };
-		5a24e2eff264faee0e6400293c1e9677 /* ofxLEDsAbstraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58bb70c0f5bcb7a3128837359d72656e /* ofxLEDsAbstraction.cpp */; };
-		79007f0f6bec4a2707ffc5aac2ee0830 /* ofxLEDs2dAbstraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 77d5cc3bf2f94f3f0dd2a6d7e8ea28c5 /* ofxLEDs2dAbstraction.cpp */; };
-		81f0780a76b36a980f447bad3180ddab /* ofxLEDsImplementation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346571c18f9b733b0ae676481dc9e28f /* ofxLEDsImplementation.cpp */; };
-		8da5c512e0b0d1b67212944b8389e206 /* ofxLEDs1dAbstraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6c5809fedb7f8bdc450a74c17c7b7f75 /* ofxLEDs1dAbstraction.cpp */; };
+		1AB6E9F21946E425004525A5 /* ofxLEDs1dAbstraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9E21946E425004525A5 /* ofxLEDs1dAbstraction.cpp */; };
+		1AB6E9F31946E425004525A5 /* ofxLEDs2dAbstraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9E41946E425004525A5 /* ofxLEDs2dAbstraction.cpp */; };
+		1AB6E9F41946E425004525A5 /* ofxLEDsAbstraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9E61946E425004525A5 /* ofxLEDsAbstraction.cpp */; };
+		1AB6E9F51946E425004525A5 /* ofxLEDsController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9E81946E425004525A5 /* ofxLEDsController.cpp */; };
+		1AB6E9F61946E425004525A5 /* ofxLEDsFrame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9EA1946E425004525A5 /* ofxLEDsFrame.cpp */; };
+		1AB6E9F71946E425004525A5 /* ofxLEDsImplementation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9EC1946E425004525A5 /* ofxLEDsImplementation.cpp */; };
+		1AB6E9F81946E425004525A5 /* ofxLEDsLPD8806.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9EE1946E425004525A5 /* ofxLEDsLPD8806.cpp */; };
+		1AB6E9F91946E425004525A5 /* ofxLEDsLPD8806Frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AB6E9F01946E425004525A5 /* ofxLEDsLPD8806Frame.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -66,16 +69,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1AB6E9E21946E425004525A5 /* ofxLEDs1dAbstraction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDs1dAbstraction.cpp; path = ../../ofxLEDs/src/ofxLEDs1dAbstraction.cpp; sourceTree = "<group>"; };
+		1AB6E9E31946E425004525A5 /* ofxLEDs1dAbstraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDs1dAbstraction.h; path = ../../ofxLEDs/src/ofxLEDs1dAbstraction.h; sourceTree = "<group>"; };
+		1AB6E9E41946E425004525A5 /* ofxLEDs2dAbstraction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDs2dAbstraction.cpp; path = ../../ofxLEDs/src/ofxLEDs2dAbstraction.cpp; sourceTree = "<group>"; };
+		1AB6E9E51946E425004525A5 /* ofxLEDs2dAbstraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDs2dAbstraction.h; path = ../../ofxLEDs/src/ofxLEDs2dAbstraction.h; sourceTree = "<group>"; };
+		1AB6E9E61946E425004525A5 /* ofxLEDsAbstraction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDsAbstraction.cpp; path = ../../ofxLEDs/src/ofxLEDsAbstraction.cpp; sourceTree = "<group>"; };
+		1AB6E9E71946E425004525A5 /* ofxLEDsAbstraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDsAbstraction.h; path = ../../ofxLEDs/src/ofxLEDsAbstraction.h; sourceTree = "<group>"; };
+		1AB6E9E81946E425004525A5 /* ofxLEDsController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDsController.cpp; path = ../../ofxLEDs/src/ofxLEDsController.cpp; sourceTree = "<group>"; };
+		1AB6E9E91946E425004525A5 /* ofxLEDsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDsController.h; path = ../../ofxLEDs/src/ofxLEDsController.h; sourceTree = "<group>"; };
+		1AB6E9EA1946E425004525A5 /* ofxLEDsFrame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDsFrame.cpp; path = ../../ofxLEDs/src/ofxLEDsFrame.cpp; sourceTree = "<group>"; };
+		1AB6E9EB1946E425004525A5 /* ofxLEDsFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDsFrame.h; path = ../../ofxLEDs/src/ofxLEDsFrame.h; sourceTree = "<group>"; };
+		1AB6E9EC1946E425004525A5 /* ofxLEDsImplementation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDsImplementation.cpp; path = ../../ofxLEDs/src/ofxLEDsImplementation.cpp; sourceTree = "<group>"; };
+		1AB6E9ED1946E425004525A5 /* ofxLEDsImplementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDsImplementation.h; path = ../../ofxLEDs/src/ofxLEDsImplementation.h; sourceTree = "<group>"; };
+		1AB6E9EE1946E425004525A5 /* ofxLEDsLPD8806.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDsLPD8806.cpp; path = ../../ofxLEDs/src/ofxLEDsLPD8806.cpp; sourceTree = "<group>"; };
+		1AB6E9EF1946E425004525A5 /* ofxLEDsLPD8806.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDsLPD8806.h; path = ../../ofxLEDs/src/ofxLEDsLPD8806.h; sourceTree = "<group>"; };
+		1AB6E9F01946E425004525A5 /* ofxLEDsLPD8806Frame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxLEDsLPD8806Frame.cpp; path = ../../ofxLEDs/src/ofxLEDsLPD8806Frame.cpp; sourceTree = "<group>"; };
+		1AB6E9F11946E425004525A5 /* ofxLEDsLPD8806Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxLEDsLPD8806Frame.h; path = ../../ofxLEDs/src/ofxLEDsLPD8806Frame.h; sourceTree = "<group>"; };
 		2b51b8f812617bb96349bfb8a1eb6227 /* ofxLPD8806.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLPD8806.h; path = ../../../addons/ofxLPD8806/src/ofxLPD8806.h; sourceTree = SOURCE_ROOT; };
-		346571c18f9b733b0ae676481dc9e28f /* ofxLEDsImplementation.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLEDsImplementation.cpp; path = ../../../addons/ofxLEDs/src/ofxLEDsImplementation.cpp; sourceTree = SOURCE_ROOT; };
-		36cf825059625d27329579cfccd371e3 /* ofxLEDsLPD8806.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLEDsLPD8806.h; path = ../../../addons/ofxLEDs/src/ofxLEDsLPD8806.h; sourceTree = SOURCE_ROOT; };
-		42e9fdb76d485b50fafa6203a416aaa3 /* ofxLEDsAbstraction.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLEDsAbstraction.h; path = ../../../addons/ofxLEDs/src/ofxLEDsAbstraction.h; sourceTree = SOURCE_ROOT; };
-		58bb70c0f5bcb7a3128837359d72656e /* ofxLEDsAbstraction.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLEDsAbstraction.cpp; path = ../../../addons/ofxLEDs/src/ofxLEDsAbstraction.cpp; sourceTree = SOURCE_ROOT; };
-		6c5809fedb7f8bdc450a74c17c7b7f75 /* ofxLEDs1dAbstraction.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLEDs1dAbstraction.cpp; path = ../../../addons/ofxLEDs/src/ofxLEDs1dAbstraction.cpp; sourceTree = SOURCE_ROOT; };
-		77d5cc3bf2f94f3f0dd2a6d7e8ea28c5 /* ofxLEDs2dAbstraction.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLEDs2dAbstraction.cpp; path = ../../../addons/ofxLEDs/src/ofxLEDs2dAbstraction.cpp; sourceTree = SOURCE_ROOT; };
-		884421c2db09a0c9e0ea42099752ac6a /* ofxLEDsImplementation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLEDsImplementation.h; path = ../../../addons/ofxLEDs/src/ofxLEDsImplementation.h; sourceTree = SOURCE_ROOT; };
-		8bd2ae4143ae85789e3de2307c68a230 /* ofxLEDs2dAbstraction.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLEDs2dAbstraction.h; path = ../../../addons/ofxLEDs/src/ofxLEDs2dAbstraction.h; sourceTree = SOURCE_ROOT; };
-		9ccda013394f7891c6674f683eee3dd6 /* ofxLEDsLPD8806.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLEDsLPD8806.cpp; path = ../../../addons/ofxLEDs/src/ofxLEDsLPD8806.cpp; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -100,7 +110,6 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		f0324b29f967f41ba2c51b633f8a0ab0 /* ofxLEDs1dAbstraction.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLEDs1dAbstraction.h; path = ../../../addons/ofxLEDs/src/ofxLEDs1dAbstraction.h; sourceTree = SOURCE_ROOT; };
 		fe5992bbc4c97487d14ac3b491fb5521 /* ofxLPD8806.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLPD8806.cpp; path = ../../../addons/ofxLPD8806/src/ofxLPD8806.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -135,16 +144,22 @@
 		4790a995f7bfb82f05a24d9fca971d81 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				6c5809fedb7f8bdc450a74c17c7b7f75 /* ofxLEDs1dAbstraction.cpp */,
-				f0324b29f967f41ba2c51b633f8a0ab0 /* ofxLEDs1dAbstraction.h */,
-				77d5cc3bf2f94f3f0dd2a6d7e8ea28c5 /* ofxLEDs2dAbstraction.cpp */,
-				8bd2ae4143ae85789e3de2307c68a230 /* ofxLEDs2dAbstraction.h */,
-				58bb70c0f5bcb7a3128837359d72656e /* ofxLEDsAbstraction.cpp */,
-				42e9fdb76d485b50fafa6203a416aaa3 /* ofxLEDsAbstraction.h */,
-				346571c18f9b733b0ae676481dc9e28f /* ofxLEDsImplementation.cpp */,
-				884421c2db09a0c9e0ea42099752ac6a /* ofxLEDsImplementation.h */,
-				9ccda013394f7891c6674f683eee3dd6 /* ofxLEDsLPD8806.cpp */,
-				36cf825059625d27329579cfccd371e3 /* ofxLEDsLPD8806.h */,
+				1AB6E9E21946E425004525A5 /* ofxLEDs1dAbstraction.cpp */,
+				1AB6E9E31946E425004525A5 /* ofxLEDs1dAbstraction.h */,
+				1AB6E9E41946E425004525A5 /* ofxLEDs2dAbstraction.cpp */,
+				1AB6E9E51946E425004525A5 /* ofxLEDs2dAbstraction.h */,
+				1AB6E9E61946E425004525A5 /* ofxLEDsAbstraction.cpp */,
+				1AB6E9E71946E425004525A5 /* ofxLEDsAbstraction.h */,
+				1AB6E9E81946E425004525A5 /* ofxLEDsController.cpp */,
+				1AB6E9E91946E425004525A5 /* ofxLEDsController.h */,
+				1AB6E9EA1946E425004525A5 /* ofxLEDsFrame.cpp */,
+				1AB6E9EB1946E425004525A5 /* ofxLEDsFrame.h */,
+				1AB6E9EC1946E425004525A5 /* ofxLEDsImplementation.cpp */,
+				1AB6E9ED1946E425004525A5 /* ofxLEDsImplementation.h */,
+				1AB6E9EE1946E425004525A5 /* ofxLEDsLPD8806.cpp */,
+				1AB6E9EF1946E425004525A5 /* ofxLEDsLPD8806.h */,
+				1AB6E9F01946E425004525A5 /* ofxLEDsLPD8806Frame.cpp */,
+				1AB6E9F11946E425004525A5 /* ofxLEDsLPD8806Frame.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -289,6 +304,8 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "example" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -346,14 +363,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB6E9F81946E425004525A5 /* ofxLEDsLPD8806.cpp in Sources */,
+				1AB6E9F41946E425004525A5 /* ofxLEDsAbstraction.cpp in Sources */,
+				1AB6E9F91946E425004525A5 /* ofxLEDsLPD8806Frame.cpp in Sources */,
+				1AB6E9F61946E425004525A5 /* ofxLEDsFrame.cpp in Sources */,
+				1AB6E9F71946E425004525A5 /* ofxLEDsImplementation.cpp in Sources */,
+				1AB6E9F51946E425004525A5 /* ofxLEDsController.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				1AB6E9F21946E425004525A5 /* ofxLEDs1dAbstraction.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				8da5c512e0b0d1b67212944b8389e206 /* ofxLEDs1dAbstraction.cpp in Sources */,
-				79007f0f6bec4a2707ffc5aac2ee0830 /* ofxLEDs2dAbstraction.cpp in Sources */,
-				5a24e2eff264faee0e6400293c1e9677 /* ofxLEDsAbstraction.cpp in Sources */,
-				81f0780a76b36a980f447bad3180ddab /* ofxLEDsImplementation.cpp in Sources */,
-				106d18a4d26dd8d1ca3e2fe0fa8955c7 /* ofxLEDsLPD8806.cpp in Sources */,
 				e6fe283dd1edc2a61f6e54d6fa96a216 /* ofxLPD8806.cpp in Sources */,
+				1AB6E9F31946E425004525A5 /* ofxLEDs2dAbstraction.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

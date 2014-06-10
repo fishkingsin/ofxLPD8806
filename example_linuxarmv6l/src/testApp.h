@@ -1,8 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxLPD8806.h"
-#include "ofxLEDsLPD8806.h"
+#include "ofxLEDsLPD8806Frame.h"
 class testApp : public ofBaseApp , public ofThread{
 	public:
 		void setup();
@@ -21,12 +20,14 @@ class testApp : public ofBaseApp , public ofThread{
         void setPixels(std::vector<ofColor>colors);
 		//--------------------------
 		void threadedFunction();
-	ofxLEDsLPD8806 *led;
-
+//	ofxLEDsLPD8806 *led;
+    ofxLEDsLPD8806Frame *led;
+#ifdef TARGET_LINUX_ARM
 	ofxLPD8806 spi;
-
+#endif
 	int mode;
 	ofColor color;
 	std::vector<ofColor>colors;
+    std::vector<uint8_t>pixels;
 	
 };
