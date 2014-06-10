@@ -130,7 +130,7 @@ void testApp::update(){
 	}
 	counter++;
 	counter%=colors.size();
-    memcpy(&led->pixelDataBuffer, &colors, colors.size());
+    
 }
 
 //--------------------------------------------------------------

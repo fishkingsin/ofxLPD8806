@@ -18,7 +18,7 @@ class testApp : public ofBaseApp , public ofThread{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-	
+        void setPixels(std::vector<ofColor>colors);
 		//--------------------------
 		void threadedFunction();
 	ofxLEDsLPD8806 *led;
