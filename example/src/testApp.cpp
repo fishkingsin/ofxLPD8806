@@ -58,9 +58,9 @@ void testApp::update(){
 	led->renderBuffer.end();
 	
 
-	
+
 #ifdef TARGET_LINUX_ARM
-	spi.send(led->txBuffer);
+	spi.send(led->pixelDataBuffer);
 #endif
 	counter++;
 	counter%=255;
@@ -85,7 +85,7 @@ void testApp::draw(){
 	ofRect(0,0,numLED*10,10);
 	ofPopStyle();
 	
-	led->draw(ptSize);
+	led->draw();
 	
 }
 
