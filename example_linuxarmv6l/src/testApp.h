@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxLEDsLPD8806Frame.h"
+#include "ofxLPD8806.h"
 class testApp : public ofBaseApp , public ofThread{
 	public:
 		void setup();
