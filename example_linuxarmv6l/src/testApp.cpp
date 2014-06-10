@@ -36,7 +36,7 @@ void testApp::exit()
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
 
-	spi.send(led->txBuffer);
+	spi.send(led->pixelDataBuffer);
 
 }
 //--------------------------------------------------------------
@@ -45,9 +45,9 @@ void testApp::threadedFunction()
 	while( isThreadRunning() != 0 ){
 		if( lock() ){
 			
-			led->setPixels(colors);
+//			led->setPixels(colors);
 
-			spi.send(led->txBuffer);
+			spi.send(led->pixelDataBuffer);
 
 			
 			unlock();
@@ -130,6 +130,7 @@ void testApp::update(){
 	}
 	counter++;
 	counter%=colors.size();
+    memcpy(&led->pixelDataBuffer, &colors, colors.size());
 }
 
 //--------------------------------------------------------------
