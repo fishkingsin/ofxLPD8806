@@ -54,3 +54,5 @@ example_linuxarmv6l_video/bin/readMe.txt
 example_16x16/bin/readMe.txt
 
 example/bin/readMe.txt
+*.DS_Store
+._*
