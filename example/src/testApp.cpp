@@ -42,7 +42,7 @@ void testApp::exit()
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
 #ifdef TARGET_LINUX_ARM
-	spi.send(led->txBuffer);
+	spi.send(led->pixelDataBuffer);
 #endif
 }
 //--------------------------------------------------------------
