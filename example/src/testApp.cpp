@@ -15,7 +15,7 @@ void drawGraphic(int mode)
 	for(int i = 0 ; i < 1; i++)
 	{
 		ofSetColor(ofColor::fromHsb(i%360, 255, 255),200);
-		ofCircle(int(ofGetFrameNum()+i*(SQAURE_ROOT)-16)%numLED, 0, SQAURE_ROOT*0.5);
+		ofDrawCircle(int(ofGetFrameNum()+i*(SQAURE_ROOT)-16)%numLED, 0, SQAURE_ROOT*0.5);
 	}
 	ofDisableBlendMode();
 	ofPopStyle();
@@ -42,7 +42,7 @@ void testApp::exit()
 	ofLogVerbose("spi")<< "close and clear led";
 	led->clear(0);
 #ifdef TARGET_LINUX_ARM
-	spi.send(led->pixelDataBuffer);
+	spi.send(led->txBuffer);
 #endif
 }
 //--------------------------------------------------------------
@@ -60,7 +60,7 @@ void testApp::update(){
 
 
 #ifdef TARGET_LINUX_ARM
-	spi.send(led->pixelDataBuffer);
+	spi.send(led->txBuffer);
 #endif
 	counter++;
 	counter%=255;
