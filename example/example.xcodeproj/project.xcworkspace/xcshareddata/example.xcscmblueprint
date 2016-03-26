@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "618321C46693092952710D9B4F99C2DD7483B9FD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "94151D1F0AEA107D25D2F1A344ABC522B60F8767" : 0,
+    "618321C46693092952710D9B4F99C2DD7483B9FD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "40E6D802-52AD-4F6D-803F-E30BB2CAC9A8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "94151D1F0AEA107D25D2F1A344ABC522B60F8767" : "ofxLEDs\/",
+    "618321C46693092952710D9B4F99C2DD7483B9FD" : "ofxLPD8806\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "example",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "example\/example.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/fishkingsin\/ofxLPD8806.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "618321C46693092952710D9B4F99C2DD7483B9FD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/fishkingsin\/ofxLEDs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "94151D1F0AEA107D25D2F1A344ABC522B60F8767"
+    }
+  ]
+}
