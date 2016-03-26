@@ -13,8 +13,8 @@ void testApp::setup(){
 	
 	ofSetFrameRate(120);
 	ofSetLogLevel(OF_LOG_VERBOSE);
-	led = new ofxLEDsLPD8806Frame();
-    led->resize(numLED);
+	led = new ofxLEDsLPD8806(numLED, col, row);
+//    led->resize(numLED);
 //	for(int i = 0 ; i< numLED ; i++)
 //	{
 //		float x = 50+20+(i%col)*ptSize;
@@ -28,7 +28,7 @@ void testApp::setup(){
 	}
 #endif
 	colors.assign(numLED,ofColor());
-	startThread(false,false);
+	startThread();
 	mode = 0;
     pixels.reserve(numLED*3);
 }
@@ -54,7 +54,7 @@ void testApp::threadedFunction()
             
                 
             }
-			led->update(pixels);
+            led->setPixels(colors);
 #ifdef TARGET_LINUX_ARM
 			spi.send(led->txBuffer);
 #endif

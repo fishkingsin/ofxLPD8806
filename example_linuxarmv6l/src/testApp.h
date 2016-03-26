@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxLEDsLPD8806Frame.h"
+#include "ofxLEDsLPD8806.h"
 #include "ofxLPD8806.h"
 class testApp : public ofBaseApp , public ofThread{
 	public:
@@ -22,7 +22,7 @@ class testApp : public ofBaseApp , public ofThread{
 		//--------------------------
 		void threadedFunction();
 //	ofxLEDsLPD8806 *led;
-    ofxLEDsLPD8806Frame *led;
+    ofxLEDsLPD8806 *led;
 #ifdef TARGET_LINUX_ARM
 	ofxLPD8806 spi;
 #endif
