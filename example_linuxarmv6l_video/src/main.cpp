@@ -1,7 +1,7 @@
 #include "ofMain.h"
-#ifdef TARGET_LINUX_ARM
-#include "ofAppEGLWindow.h"
-#endif
+// #ifdef TARGET_LINUX_ARM
+// #include "ofAppEGLWindow.h"
+// #endif
 #include "testApp.h"
 
 //========================================================================
